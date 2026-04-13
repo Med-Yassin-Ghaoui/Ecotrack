@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FileText, Users, AlertTriangle, CheckCircle, ArrowUp, ArrowDown, Download, Image as ImageIcon } from 'lucide-react';
 import { cn } from '../lib/utils';
+import { ReportViewerModal } from './ReportViewerModal';
 
 export default function Dashboard() {
+  const [isReportViewerOpen, setIsReportViewerOpen] = useState(false);
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
@@ -178,7 +180,10 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <button className="w-full py-4 bg-gray-900 text-white font-bold rounded-xl hover:bg-gray-800 transition-all shadow-md active:scale-[0.98] flex items-center justify-center text-lg">
+            <button 
+              onClick={() => setIsReportViewerOpen(true)}
+              className="w-full py-4 bg-[#1e3a8a] text-white font-bold rounded-xl hover:bg-[#1e3a8a]/90 transition-all shadow-md active:scale-[0.98] flex items-center justify-center text-lg"
+            >
               <Download className="w-5 h-5 mr-2" /> Generate Report
             </button>
           </div>
@@ -222,6 +227,11 @@ export default function Dashboard() {
 
         </div>
       </div>
+
+      <ReportViewerModal 
+        isOpen={isReportViewerOpen} 
+        onClose={() => setIsReportViewerOpen(false)} 
+      />
     </div>
   );
 }
