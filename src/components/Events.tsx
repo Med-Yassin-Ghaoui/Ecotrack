@@ -19,7 +19,7 @@ export default function Events({ events, onJoin }: { events: any[], onJoin: (id:
           
           return (
             <div key={event.id} className="bg-white rounded-3xl shadow-sm border border-gray-200/60 overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col group">
-              <div className="h-36 bg-gradient-to-br from-[#1B4332] to-primary relative overflow-hidden">
+              <div className="h-36 bg-gradient-to-br from-[#1E3A8A] to-primary relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
                 <div className="absolute top-5 left-5 bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-full text-xs font-bold text-gray-900 shadow-sm">
                   {event.organizer}

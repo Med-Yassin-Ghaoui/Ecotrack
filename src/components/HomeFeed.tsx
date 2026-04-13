@@ -22,20 +22,20 @@ export default function HomeFeed({ reports, onUpvote, onClaim }: { reports: any[
         <h2 className="text-3xl font-heading text-gray-900 mb-5 tracking-tight">Did you clean today?</h2>
         
         <div className="flex items-center space-x-2 mb-8">
-          <div className="w-8 h-8 rounded-full bg-[#4A5D23] text-white flex items-center justify-center font-bold text-sm shadow-sm">⚡</div>
-          <div className="w-8 h-8 rounded-full bg-[#4A5D23] text-white flex items-center justify-center font-bold text-sm shadow-sm">⚡</div>
+          <div className="w-8 h-8 rounded-full bg-[#3972F0] text-white flex items-center justify-center font-bold text-sm shadow-sm">⚡</div>
+          <div className="w-8 h-8 rounded-full bg-[#3972F0] text-white flex items-center justify-center font-bold text-sm shadow-sm">⚡</div>
           <div className="w-8 h-8 rounded-full bg-gray-200 text-white flex items-center justify-center font-bold text-sm">T</div>
           <div className="w-8 h-8 rounded-full bg-gray-200 text-white flex items-center justify-center font-bold text-sm">W</div>
           <div className="w-8 h-8 rounded-full bg-gray-200 text-white flex items-center justify-center font-bold text-sm relative">
             T
-            <span className="absolute -bottom-2.5 w-1.5 h-1.5 bg-[#4A5D23] rounded-full"></span>
+            <span className="absolute -bottom-2.5 w-1.5 h-1.5 bg-[#3972F0] rounded-full"></span>
           </div>
           <div className="w-8 h-8 rounded-full bg-gray-200 text-white flex items-center justify-center font-bold text-sm">F</div>
           <div className="w-8 h-8 rounded-full bg-gray-200 text-white flex items-center justify-center font-bold text-sm">S</div>
         </div>
         
         <div className="flex items-center space-x-3">
-          <button className="bg-[#4A5D23] text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-[#3b4a1c] transition-colors shadow-sm active:scale-95">
+          <button className="bg-[#3972F0] text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-[#2563EB] transition-colors shadow-sm active:scale-95">
             I cleaned today
           </button>
           <button className="w-11 h-11 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50 shadow-sm transition-colors">
@@ -45,7 +45,7 @@ export default function HomeFeed({ reports, onUpvote, onClaim }: { reports: any[
 
         {/* Decorative Image Placeholder */}
         <div className="absolute right-6 top-1/2 transform -translate-y-1/2 w-24 h-32 bg-gray-900 rounded-xl shadow-lg hidden sm:flex items-center justify-center overflow-hidden border-4 border-white">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#4A5D23] to-[#2D6A4F] opacity-80"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#3972F0] to-[#1E3A8A] opacity-80"></div>
           <span className="text-4xl relative z-10">🌍</span>
         </div>
       </div>

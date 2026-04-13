@@ -3,11 +3,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap');
 
 @theme {
-  --color-primary: #2D6A4F;
-  --color-secondary: #52B788;
-  --color-accent: #F4A261;
-  --color-bg-light: #F8F9FA;
-  --color-text-dark: #1B1B1B;
+  --color-primary: #3972F0;
+  --color-secondary: #afcdff;
+  --color-accent: #F59E0B;
+  --color-bg-light: #F5F8FF;
+  --color-text-dark: #1F2937;
   --font-sans: 'Roboto', system-ui, -apple-system, sans-serif;
   --font-heading: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;

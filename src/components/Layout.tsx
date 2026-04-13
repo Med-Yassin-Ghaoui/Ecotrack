@@ -51,14 +51,14 @@ export function Layout() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col font-sans text-gray-900 bg-[#F8F9FA] pb-24 md:pb-0">
+    <div className="min-h-screen flex flex-col font-sans text-gray-900 bg-[#F5F8FF] pb-24 md:pb-0">
       <Navbar onOpenReport={() => setIsReportModalOpen(true)} />
       
       <main className="flex-1 relative">
         <Outlet context={{ openReportModal: () => setIsReportModalOpen(true) }} />
       </main>
 
-      <footer className="hidden md:block bg-[#1B4332] text-white py-10 mt-auto border-t border-[#143224]">
+      <footer className="hidden md:block bg-[#1E3A8A] text-white py-10 mt-auto border-t border-[#1e40af]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-center md:text-left">
             <div className="font-black text-xl mb-2 flex items-center justify-center md:justify-start">
@@ -85,7 +85,7 @@ export function Layout() {
       >
         <button 
           onClick={() => setIsReportModalOpen(true)}
-          className="flex items-center justify-center px-5 py-3.5 bg-[#4A5D23] text-white font-bold rounded-full shadow-lg hover:bg-[#3b4a1c] active:scale-95 transition-all"
+          className="flex items-center justify-center px-5 py-3.5 bg-[#3972F0] text-white font-bold rounded-full shadow-lg hover:bg-[#2563EB] active:scale-95 transition-all"
         >
           <Plus className="w-5 h-5 mr-2" />
           Report
