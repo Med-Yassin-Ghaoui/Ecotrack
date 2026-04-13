@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Outlet, NavLink, useLocation } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { Modal } from './Modal';
-import { MapPin, Image as ImageIcon, Home, Map as MapIcon, Calendar, Trophy, LayoutDashboard, Plus, Heart, Camera } from 'lucide-react';
+import { MapPin, Image as ImageIcon, Home, Map as MapIcon, Calendar, Trophy, LayoutDashboard, Plus, Heart, Camera, X } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { Logo } from './Logo';
 
@@ -10,7 +10,21 @@ export function Layout() {
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
   const [showBottomNav, setShowBottomNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
   const location = useLocation();
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      setPreviewImage(url);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setIsReportModalOpen(false);
+    setPreviewImage(null);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -109,7 +123,7 @@ export function Layout() {
       {/* Global Report Modal */}
       <Modal 
         isOpen={isReportModalOpen} 
-        onClose={() => setIsReportModalOpen(false)}
+        onClose={handleCloseModal}
         title="Report Pollution"
       >
         <div className="p-6 space-y-5">
@@ -136,18 +150,30 @@ export function Layout() {
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1.5">Photo Evidence</label>
-            <div className="grid grid-cols-2 gap-3">
-              <label className="border-2 border-dashed border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center text-gray-500 hover:bg-gray-50 hover:border-primary/50 transition-colors cursor-pointer bg-gray-50/50 group">
-                <Camera className="w-8 h-8 mb-3 text-gray-400 group-hover:text-primary transition-colors" />
-                <span className="text-sm font-medium text-gray-600">Take Photo</span>
-                <input type="file" accept="image/*" capture="environment" className="hidden" />
-              </label>
-              <label className="border-2 border-dashed border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center text-gray-500 hover:bg-gray-50 hover:border-primary/50 transition-colors cursor-pointer bg-gray-50/50 group">
-                <ImageIcon className="w-8 h-8 mb-3 text-gray-400 group-hover:text-primary transition-colors" />
-                <span className="text-sm font-medium text-gray-600">Upload Image</span>
-                <input type="file" accept="image/*" className="hidden" />
-              </label>
-            </div>
+            {previewImage ? (
+              <div className="relative rounded-xl overflow-hidden border border-gray-200 aspect-video bg-gray-100">
+                <img src={previewImage} alt="Preview" className="w-full h-full object-cover" />
+                <button
+                  onClick={() => setPreviewImage(null)}
+                  className="absolute top-2 right-2 bg-black/50 text-white p-1.5 rounded-full hover:bg-black/70 transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 gap-3">
+                <label className="border-2 border-dashed border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center text-gray-500 hover:bg-gray-50 hover:border-primary/50 transition-colors cursor-pointer bg-gray-50/50 group">
+                  <Camera className="w-8 h-8 mb-3 text-gray-400 group-hover:text-primary transition-colors" />
+                  <span className="text-sm font-medium text-gray-600">Take Photo</span>
+                  <input type="file" accept="image/*" capture="environment" className="hidden" onChange={handleImageChange} />
+                </label>
+                <label className="border-2 border-dashed border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center text-gray-500 hover:bg-gray-50 hover:border-primary/50 transition-colors cursor-pointer bg-gray-50/50 group">
+                  <ImageIcon className="w-8 h-8 mb-3 text-gray-400 group-hover:text-primary transition-colors" />
+                  <span className="text-sm font-medium text-gray-600">Upload Image</span>
+                  <input type="file" accept="image/*" className="hidden" onChange={handleImageChange} />
+                </label>
+              </div>
+            )}
           </div>
 
           <div>
@@ -161,7 +187,7 @@ export function Layout() {
 
         <div className="p-5 border-t border-gray-100 bg-gray-50/80 backdrop-blur-sm">
           <button 
-            onClick={() => setIsReportModalOpen(false)}
+            onClick={handleCloseModal}
             className="w-full py-3.5 bg-accent text-white font-bold rounded-xl hover:bg-accent/90 transition-all shadow-sm active:scale-[0.98]"
           >
             Submit Report
