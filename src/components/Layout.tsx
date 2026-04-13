@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Outlet, NavLink, useLocation } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { Modal } from './Modal';
-import { MapPin, Image as ImageIcon, Home, Map as MapIcon, Calendar, Trophy, LayoutDashboard, Plus, Heart } from 'lucide-react';
+import { MapPin, Image as ImageIcon, Home, Map as MapIcon, Calendar, Trophy, LayoutDashboard, Plus, Heart, Camera } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { Logo } from './Logo';
 
@@ -136,10 +136,17 @@ export function Layout() {
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1.5">Photo Evidence</label>
-            <div className="border-2 border-dashed border-gray-200 rounded-xl p-8 flex flex-col items-center justify-center text-gray-500 hover:bg-gray-50 hover:border-primary/50 transition-colors cursor-pointer bg-gray-50/50">
-              <ImageIcon className="w-8 h-8 mb-3 text-gray-400" />
-              <span className="text-sm font-medium text-gray-600">Drag & drop or click to upload</span>
-              <span className="text-xs text-gray-400 mt-1">PNG, JPG up to 5MB</span>
+            <div className="grid grid-cols-2 gap-3">
+              <label className="border-2 border-dashed border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center text-gray-500 hover:bg-gray-50 hover:border-primary/50 transition-colors cursor-pointer bg-gray-50/50 group">
+                <Camera className="w-8 h-8 mb-3 text-gray-400 group-hover:text-primary transition-colors" />
+                <span className="text-sm font-medium text-gray-600">Take Photo</span>
+                <input type="file" accept="image/*" capture="environment" className="hidden" />
+              </label>
+              <label className="border-2 border-dashed border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center text-gray-500 hover:bg-gray-50 hover:border-primary/50 transition-colors cursor-pointer bg-gray-50/50 group">
+                <ImageIcon className="w-8 h-8 mb-3 text-gray-400 group-hover:text-primary transition-colors" />
+                <span className="text-sm font-medium text-gray-600">Upload Image</span>
+                <input type="file" accept="image/*" className="hidden" />
+              </label>
             </div>
           </div>
 
