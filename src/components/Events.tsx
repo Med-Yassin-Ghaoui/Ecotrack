@@ -8,8 +8,8 @@ export default function Events({ events, onJoin }: { events: any[], onJoin: (id:
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-10">
-        <h1 className="text-3xl font-black text-gray-900 tracking-tight">Upcoming Cleanup Events</h1>
-        <p className="text-gray-500 mt-2 text-lg font-medium">Organized by Fish Life Protection NGO & Community Leaders</p>
+        <h1 className="text-3xl font-black text-gray-900 tracking-tight">Événements de nettoyage à venir</h1>
+        <p className="text-gray-500 mt-2 text-lg font-medium">Organisés par l'ONG Earth Life Protection & les leaders communautaires</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -43,7 +43,7 @@ export default function Events({ events, onJoin }: { events: any[], onJoin: (id:
                     <Users className="w-5 h-5 mr-3 text-primary mt-0.5" />
                     <div className="flex-1">
                       <div className="flex justify-between mb-2">
-                        <span>{event.volunteers} / {event.maxVolunteers} volunteers</span>
+                        <span>{event.volunteers} / {event.maxVolunteers} bénévoles</span>
                         <span className="font-bold text-primary">{fillPercentage}%</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
@@ -65,7 +65,7 @@ export default function Events({ events, onJoin }: { events: any[], onJoin: (id:
                       : 'bg-gray-900 text-white hover:bg-gray-800 active:scale-[0.98]'
                   }`}
                 >
-                  {isFull ? 'Event Full' : 'Join Event'}
+                  {isFull ? 'Événement complet' : 'Rejoindre l\'événement'}
                   {!isFull && <ArrowRight className="w-4 h-4 ml-2" />}
                 </button>
               </div>
@@ -76,14 +76,14 @@ export default function Events({ events, onJoin }: { events: any[], onJoin: (id:
 
       <div className="bg-gradient-to-br from-primary/5 to-secondary/10 rounded-3xl border border-primary/20 p-10 text-center relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-        <h2 className="text-2xl font-black text-gray-900 mb-3 relative z-10">Are you an NGO or Community Leader?</h2>
-        <p className="text-gray-600 mb-8 max-w-2xl mx-auto text-lg relative z-10">Organize your own cleanup event, mobilize volunteers, and make a real impact in your local environment.</p>
+        <h2 className="text-2xl font-black text-gray-900 mb-3 relative z-10">Êtes-vous une ONG ou un leader communautaire ?</h2>
+        <p className="text-gray-600 mb-8 max-w-2xl mx-auto text-lg relative z-10">Organisez votre propre événement de nettoyage, mobilisez des bénévoles et ayez un impact réel sur votre environnement local.</p>
         <button 
           onClick={() => setIsCreateModalOpen(true)}
           className="inline-flex items-center px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-md hover:shadow-lg active:scale-95 relative z-10"
         >
           <Plus className="w-5 h-5 mr-2" />
-          Create Event
+          Créer un événement
         </button>
       </div>
 
@@ -91,12 +91,12 @@ export default function Events({ events, onJoin }: { events: any[], onJoin: (id:
       <Modal 
         isOpen={isCreateModalOpen} 
         onClose={() => setIsCreateModalOpen(false)}
-        title="Create Cleanup Event"
+        title="Créer un événement de nettoyage"
       >
         <div className="p-6 space-y-5">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Event Title</label>
-            <input type="text" placeholder="e.g., Weekend Park Cleanup" className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" />
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Titre de l'événement</label>
+            <input type="text" placeholder="ex: Nettoyage du parc ce week-end" className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" />
           </div>
           
           <div className="grid grid-cols-2 gap-4">
@@ -105,27 +105,27 @@ export default function Events({ events, onJoin }: { events: any[], onJoin: (id:
               <input type="date" className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1.5">Time</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-1.5">Heure</label>
               <input type="time" className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Location</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Emplacement</label>
             <div className="relative">
               <MapPin className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input type="text" placeholder="Meeting point address" className="w-full border border-gray-200 rounded-xl pl-11 pr-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" />
+              <input type="text" placeholder="Adresse du point de rendez-vous" className="w-full border border-gray-200 rounded-xl pl-11 pr-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Max Volunteers</label>
-            <input type="number" placeholder="e.g., 50" className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" />
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Nombre max de bénévoles</label>
+            <input type="number" placeholder="ex: 50" className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" />
           </div>
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1.5">Description</label>
-            <textarea rows={3} placeholder="What should volunteers bring? What's the plan?" className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm resize-none"></textarea>
+            <textarea rows={3} placeholder="Que doivent apporter les bénévoles ? Quel est le programme ?" className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm resize-none"></textarea>
           </div>
         </div>
 
@@ -134,7 +134,7 @@ export default function Events({ events, onJoin }: { events: any[], onJoin: (id:
             onClick={() => setIsCreateModalOpen(false)}
             className="w-full py-3.5 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-sm active:scale-[0.98]"
           >
-            Create Event
+            Créer l'événement
           </button>
         </div>
       </Modal>

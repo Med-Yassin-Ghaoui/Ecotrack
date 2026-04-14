@@ -6,12 +6,12 @@ import { Logo } from './Logo';
 
 export function Navbar({ onOpenReport }: { onOpenReport: () => void }) {
   const navLinks = [
-    { to: '/', label: 'Home Feed' },
-    { to: '/map', label: 'Map View' },
-    { to: '/events', label: 'Events' },
-    { to: '/leaderboard', label: 'Leaderboard' },
-    { to: '/donate', label: 'Donate' },
-    { to: '/dashboard', label: 'Dashboard' },
+    { to: '/', label: 'Accueil' },
+    { to: '/map', label: 'Carte' },
+    { to: '/events', label: 'Événements' },
+    { to: '/leaderboard', label: 'Classement' },
+    { to: '/donate', label: 'Faire un don' },
+    { to: '/dashboard', label: 'Tableau de bord' },
   ];
 
   return (
@@ -52,7 +52,7 @@ export function Navbar({ onOpenReport }: { onOpenReport: () => void }) {
               className="hidden md:flex items-center px-4 py-2 bg-accent text-white text-sm font-bold rounded-xl hover:bg-accent/90 transition-all shadow-sm hover:shadow active:scale-95"
             >
               <Plus className="w-4 h-4 mr-1.5" />
-              Report Pollution
+              Signaler une pollution
             </button>
             
             {/* Mobile Profile Avatar (Placeholder) */}

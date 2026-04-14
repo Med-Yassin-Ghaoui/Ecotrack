@@ -14,7 +14,7 @@ export function Layout({ onAddReport }: { onAddReport?: (report: any) => void })
   
   // Form state
   const [title, setTitle] = useState('');
-  const [category, setCategory] = useState('Park Waste');
+  const [category, setCategory] = useState('Déchets de parc');
   const [description, setDescription] = useState('');
   const [reportLocation, setReportLocation] = useState('');
 
@@ -32,7 +32,7 @@ export function Layout({ onAddReport }: { onAddReport?: (report: any) => void })
     setIsReportModalOpen(false);
     setPreviewImage(null);
     setTitle('');
-    setCategory('Park Waste');
+    setCategory('Déchets de parc');
     setDescription('');
     setReportLocation('');
   };
@@ -41,11 +41,11 @@ export function Layout({ onAddReport }: { onAddReport?: (report: any) => void })
     if (!title || !description || !reportLocation) return; // Basic validation
 
     const categoryIcons: Record<string, string> = {
-      'Park Waste': '🏞️',
-      'Street Waste': '🗑️',
-      'Forest Debris': '🌲',
-      'Illegal Dumping': '⚠️',
-      'Air Pollution': '💨'
+      'Déchets de parc': '🏞️',
+      'Déchets de rue': '🗑️',
+      'Déchets forestiers': '🌲',
+      'Dépôt sauvage': '⚠️',
+      "Pollution de l'air": '💨'
     };
 
     const newReport = {
@@ -57,7 +57,7 @@ export function Layout({ onAddReport }: { onAddReport?: (report: any) => void })
       location: reportLocation,
       lat: 36.8, // Default approx lat
       lng: 10.2, // Default approx lng
-      timeAgo: "Just now",
+      timeAgo: "À l'instant",
       upvotes: 0,
       status: "Open",
       comments: 0,
@@ -87,12 +87,12 @@ export function Layout({ onAddReport }: { onAddReport?: (report: any) => void })
   }, [lastScrollY]);
 
   const navLinks = [
-    { to: '/', icon: Home, label: 'Home' },
-    { to: '/map', icon: MapIcon, label: 'Map' },
-    { to: '/events', icon: Calendar, label: 'Events' },
-    { to: '/leaderboard', icon: Trophy, label: 'Rank' },
-    { to: '/donate', icon: Heart, label: 'Donate' },
-    { to: '/dashboard', icon: LayoutDashboard, label: 'NGO' },
+    { to: '/', icon: Home, label: 'Accueil' },
+    { to: '/map', icon: MapIcon, label: 'Carte' },
+    { to: '/events', icon: Calendar, label: 'Événements' },
+    { to: '/leaderboard', icon: Trophy, label: 'Classement' },
+    { to: '/donate', icon: Heart, label: 'Faire un don' },
+    { to: '/dashboard', icon: LayoutDashboard, label: 'ONG' },
   ];
 
   return (
@@ -110,7 +110,7 @@ export function Layout({ onAddReport }: { onAddReport?: (report: any) => void })
               <Logo className="w-6 h-6 mr-2" /> EcoTrack Community
             </div>
             <p className="text-primary-100/80 text-sm max-w-sm">
-              Open-source software built in partnership with Earth Life Protection 🌲. Making our environment cleaner, together.
+              Logiciel open-source développé en partenariat avec Earth Life Protection 🌲. Rendre notre environnement plus propre, ensemble.
             </p>
           </div>
           <div className="flex space-x-8 text-sm font-medium text-primary-100/80">
@@ -133,7 +133,7 @@ export function Layout({ onAddReport }: { onAddReport?: (report: any) => void })
           className="flex items-center justify-center px-5 py-3.5 bg-[#3972F0] text-white font-bold rounded-full shadow-lg hover:bg-[#2563EB] active:scale-95 transition-all"
         >
           <Plus className="w-5 h-5 mr-2" />
-          Report
+          Signaler
         </button>
       </div>
 
@@ -169,14 +169,14 @@ export function Layout({ onAddReport }: { onAddReport?: (report: any) => void })
       <Modal 
         isOpen={isReportModalOpen} 
         onClose={handleCloseModal}
-        title="Report Pollution"
+        title="Signaler une pollution"
       >
         <div className="p-6 space-y-5">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Title</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Titre</label>
             <input 
               type="text" 
-              placeholder="e.g., Plastic waste in the park" 
+              placeholder="ex: Déchets plastiques dans le parc" 
               className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" 
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -184,17 +184,17 @@ export function Layout({ onAddReport }: { onAddReport?: (report: any) => void })
           </div>
           
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Category</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Catégorie</label>
             <select 
               className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm bg-white appearance-none"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
-              <option>Park Waste</option>
-              <option>Street Waste</option>
-              <option>Forest Debris</option>
-              <option>Illegal Dumping</option>
-              <option>Air Pollution</option>
+              <option>Déchets de parc</option>
+              <option>Déchets de rue</option>
+              <option>Déchets forestiers</option>
+              <option>Dépôt sauvage</option>
+              <option>Pollution de l'air</option>
             </select>
           </div>
 
@@ -202,7 +202,7 @@ export function Layout({ onAddReport }: { onAddReport?: (report: any) => void })
             <label className="block text-sm font-semibold text-gray-700 mb-1.5">Description</label>
             <textarea 
               rows={3} 
-              placeholder="Describe the issue..." 
+              placeholder="Décrivez le problème..." 
               className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm resize-none"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -210,10 +210,10 @@ export function Layout({ onAddReport }: { onAddReport?: (report: any) => void })
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Photo Evidence</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Preuve photographique</label>
             {previewImage ? (
               <div className="relative rounded-xl overflow-hidden border border-gray-200 aspect-video bg-gray-100">
-                <img src={previewImage} alt="Preview" className="w-full h-full object-cover" />
+                <img src={previewImage} alt="Aperçu" className="w-full h-full object-cover" />
                 <button
                   onClick={() => setPreviewImage(null)}
                   className="absolute top-2 right-2 bg-black/50 text-white p-1.5 rounded-full hover:bg-black/70 transition-colors"
@@ -225,12 +225,12 @@ export function Layout({ onAddReport }: { onAddReport?: (report: any) => void })
               <div className="grid grid-cols-2 gap-3">
                 <label className="border-2 border-dashed border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center text-gray-500 hover:bg-gray-50 hover:border-primary/50 transition-colors cursor-pointer bg-gray-50/50 group">
                   <Camera className="w-8 h-8 mb-3 text-gray-400 group-hover:text-primary transition-colors" />
-                  <span className="text-sm font-medium text-gray-600">Take Photo</span>
+                  <span className="text-sm font-medium text-gray-600">Prendre une photo</span>
                   <input type="file" accept="image/*" capture="environment" className="hidden" onChange={handleImageChange} />
                 </label>
                 <label className="border-2 border-dashed border-gray-200 rounded-xl p-6 flex flex-col items-center justify-center text-gray-500 hover:bg-gray-50 hover:border-primary/50 transition-colors cursor-pointer bg-gray-50/50 group">
                   <ImageIcon className="w-8 h-8 mb-3 text-gray-400 group-hover:text-primary transition-colors" />
-                  <span className="text-sm font-medium text-gray-600">Upload Image</span>
+                  <span className="text-sm font-medium text-gray-600">Téléverser une image</span>
                   <input type="file" accept="image/*" className="hidden" onChange={handleImageChange} />
                 </label>
               </div>
@@ -238,12 +238,12 @@ export function Layout({ onAddReport }: { onAddReport?: (report: any) => void })
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Location</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Emplacement</label>
             <div className="relative">
               <MapPin className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input 
                 type="text" 
-                placeholder="Search location or drop pin..." 
+                placeholder="Rechercher un lieu ou placer un repère..." 
                 className="w-full border border-gray-200 rounded-xl pl-11 pr-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" 
                 value={reportLocation}
                 onChange={(e) => setReportLocation(e.target.value)}
@@ -258,7 +258,7 @@ export function Layout({ onAddReport }: { onAddReport?: (report: any) => void })
             disabled={!title || !description || !reportLocation}
             className="w-full py-3.5 bg-accent text-white font-bold rounded-xl hover:bg-accent/90 transition-all shadow-sm active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Submit Report
+            Soumettre le signalement
           </button>
         </div>
       </Modal>

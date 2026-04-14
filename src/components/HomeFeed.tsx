@@ -8,10 +8,10 @@ export default function HomeFeed({ reports, onUpvote, onClaim }: { reports: any[
 
   // Mock users for the feed to match the design
   const mockUsers = [
-    { name: 'Bailey', avatar: 'https://i.pravatar.cc/150?img=47', action: 'Reported', emoji: '💙' },
-    { name: 'Sarah', avatar: 'https://i.pravatar.cc/150?img=43', action: 'Resolved', emoji: '🌱' },
-    { name: 'Omar', avatar: 'https://i.pravatar.cc/150?img=11', action: 'Commented on', emoji: '🌲' },
-    { name: 'Lina', avatar: 'https://i.pravatar.cc/150?img=5', action: 'Reported', emoji: '🌍' },
+    { name: 'Bailey', avatar: 'https://i.pravatar.cc/150?img=47', action: 'a signalé', emoji: '💙' },
+    { name: 'Sarah', avatar: 'https://i.pravatar.cc/150?img=43', action: 'a résolu', emoji: '🌱' },
+    { name: 'Omar', avatar: 'https://i.pravatar.cc/150?img=11', action: 'a commenté sur', emoji: '🌲' },
+    { name: 'Lina', avatar: 'https://i.pravatar.cc/150?img=5', action: 'a signalé', emoji: '🌍' },
   ];
 
   return (
@@ -19,24 +19,24 @@ export default function HomeFeed({ reports, onUpvote, onClaim }: { reports: any[
       
       {/* Top Status Card */}
       <div className="bg-[#FDFBF7] rounded-[2rem] p-6 md:p-8 mb-10 shadow-sm border border-[#F2EFEA] relative overflow-hidden">
-        <h2 className="text-3xl font-heading text-gray-900 mb-5 tracking-tight">Did you clean today?</h2>
+        <h2 className="text-3xl font-heading text-gray-900 mb-5 tracking-tight">Avez-vous nettoyé aujourd'hui ?</h2>
         
         <div className="flex items-center space-x-2 mb-8">
           <div className="w-8 h-8 rounded-full bg-[#3972F0] text-white flex items-center justify-center font-bold text-sm shadow-sm">⚡</div>
           <div className="w-8 h-8 rounded-full bg-[#3972F0] text-white flex items-center justify-center font-bold text-sm shadow-sm">⚡</div>
-          <div className="w-8 h-8 rounded-full bg-gray-200 text-white flex items-center justify-center font-bold text-sm">T</div>
-          <div className="w-8 h-8 rounded-full bg-gray-200 text-white flex items-center justify-center font-bold text-sm">W</div>
+          <div className="w-8 h-8 rounded-full bg-gray-200 text-white flex items-center justify-center font-bold text-sm">M</div>
+          <div className="w-8 h-8 rounded-full bg-gray-200 text-white flex items-center justify-center font-bold text-sm">M</div>
           <div className="w-8 h-8 rounded-full bg-gray-200 text-white flex items-center justify-center font-bold text-sm relative">
-            T
+            J
             <span className="absolute -bottom-2.5 w-1.5 h-1.5 bg-[#3972F0] rounded-full"></span>
           </div>
-          <div className="w-8 h-8 rounded-full bg-gray-200 text-white flex items-center justify-center font-bold text-sm">F</div>
+          <div className="w-8 h-8 rounded-full bg-gray-200 text-white flex items-center justify-center font-bold text-sm">V</div>
           <div className="w-8 h-8 rounded-full bg-gray-200 text-white flex items-center justify-center font-bold text-sm">S</div>
         </div>
         
         <div className="flex items-center space-x-3">
           <button className="bg-[#3972F0] text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-[#2563EB] transition-colors shadow-sm active:scale-95">
-            I cleaned today
+            J'ai nettoyé aujourd'hui
           </button>
           <button className="w-11 h-11 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50 shadow-sm transition-colors">
             <MoreHorizontal className="w-5 h-5" />
@@ -54,13 +54,13 @@ export default function HomeFeed({ reports, onUpvote, onClaim }: { reports: any[
       <div className="space-y-12">
         {reports.map((report, index) => {
           const user = report.isAnonymous 
-            ? { name: 'Anonymous', avatar: 'https://ui-avatars.com/api/?name=Anonymous&background=f3f4f6&color=9ca3af', action: 'Reported', emoji: '🕵️' }
+            ? { name: 'Anonyme', avatar: 'https://ui-avatars.com/api/?name=Anonyme&background=f3f4f6&color=9ca3af', action: 'a signalé', emoji: '🕵️' }
             : mockUsers[index % mockUsers.length];
 
           return (
             <div key={report.id} className="group">
               <div className="text-gray-500 italic text-[15px] mb-4 font-heading">
-                Because you live near {report.location}
+                Parce que vous habitez près de {report.location}
               </div>
               
               <div className="flex items-center justify-between mb-4">
@@ -101,8 +101,8 @@ export default function HomeFeed({ reports, onUpvote, onClaim }: { reports: any[
                   </span>
                   <span className={cn(
                     "px-2.5 py-1 rounded-lg",
-                    report.status === 'Open' ? 'bg-red-50 text-red-700' :
-                    report.status === 'In Progress' ? 'bg-orange-50 text-orange-700' :
+                    report.status === 'Ouvert' || report.status === 'Open' ? 'bg-red-50 text-red-700' :
+                    report.status === 'En cours' || report.status === 'In Progress' ? 'bg-orange-50 text-orange-700' :
                     'bg-green-50 text-green-700'
                   )}>
                     {report.status}

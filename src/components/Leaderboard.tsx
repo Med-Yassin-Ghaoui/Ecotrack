@@ -9,9 +9,9 @@ export default function Leaderboard({ data }: { data: any[] }) {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-12 text-center">
         <h1 className="text-3xl font-black text-gray-900 flex items-center justify-center tracking-tight">
-          <Trophy className="w-8 h-8 text-accent mr-3" /> Volunteer Leaderboard
+          <Trophy className="w-8 h-8 text-accent mr-3" /> Classement des bénévoles
         </h1>
-        <p className="text-gray-500 mt-2 text-lg font-medium">Top environmental heroes this month</p>
+        <p className="text-gray-500 mt-2 text-lg font-medium">Les meilleurs héros de l'environnement ce mois-ci</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
@@ -78,11 +78,11 @@ export default function Leaderboard({ data }: { data: any[] }) {
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-gray-50/50 border-b border-gray-100">
-                    <th className="py-5 px-6 font-bold text-gray-500 text-xs uppercase tracking-wider">Rank</th>
-                    <th className="py-5 px-6 font-bold text-gray-500 text-xs uppercase tracking-wider">Volunteer</th>
-                    <th className="py-5 px-6 font-bold text-gray-500 text-xs uppercase tracking-wider text-center">Issues</th>
-                    <th className="py-5 px-6 font-bold text-gray-500 text-xs uppercase tracking-wider text-center">Events</th>
-                    <th className="py-5 px-6 font-bold text-gray-500 text-xs uppercase tracking-wider text-center">Upvotes</th>
+                    <th className="py-5 px-6 font-bold text-gray-500 text-xs uppercase tracking-wider">Rang</th>
+                    <th className="py-5 px-6 font-bold text-gray-500 text-xs uppercase tracking-wider">Bénévole</th>
+                    <th className="py-5 px-6 font-bold text-gray-500 text-xs uppercase tracking-wider text-center">Problèmes</th>
+                    <th className="py-5 px-6 font-bold text-gray-500 text-xs uppercase tracking-wider text-center">Événements</th>
+                    <th className="py-5 px-6 font-bold text-gray-500 text-xs uppercase tracking-wider text-center">Votes</th>
                     <th className="py-5 px-6 font-bold text-gray-500 text-xs uppercase tracking-wider text-right">Points</th>
                   </tr>
                 </thead>
@@ -90,7 +90,7 @@ export default function Leaderboard({ data }: { data: any[] }) {
                   {data.map((row, index) => (
                     <tr key={index} className={cn(
                       "hover:bg-gray-50 transition-colors group",
-                      row.name.includes('You') ? "bg-primary/5 hover:bg-primary/10" : ""
+                      row.name.includes('Vous') ? "bg-primary/5 hover:bg-primary/10" : ""
                     )}>
                       <td className="py-4 px-6 text-gray-400 font-bold text-sm">
                         {row.rank <= 3 ? <span className="text-transparent">#{row.rank}</span> : `#${row.rank}`}
@@ -100,7 +100,7 @@ export default function Leaderboard({ data }: { data: any[] }) {
                           <div className={cn("w-9 h-9 rounded-full text-white flex items-center justify-center text-xs font-bold mr-4 shadow-sm", row.color)}>
                             {row.initials}
                           </div>
-                          <span className={cn("font-semibold", row.name.includes('You') ? "text-primary font-bold" : "text-gray-900")}>
+                          <span className={cn("font-semibold", row.name.includes('Vous') ? "text-primary font-bold" : "text-gray-900")}>
                             {row.name}
                           </span>
                         </div>
@@ -121,30 +121,30 @@ export default function Leaderboard({ data }: { data: any[] }) {
         <div className="lg:col-span-4 space-y-6">
           <div className="bg-white rounded-3xl shadow-sm border border-gray-200/60 p-8 relative overflow-hidden">
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/5 rounded-full -z-10 blur-2xl"></div>
-            <h3 className="font-black text-xl text-gray-900 mb-6">Your Stats</h3>
+            <h3 className="font-black text-xl text-gray-900 mb-6">Vos statistiques</h3>
             
             <div className="grid grid-cols-2 gap-4 mb-8">
               <div className="bg-gray-50 rounded-2xl p-5 text-center border border-gray-100">
-                <div className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2">Your Rank</div>
+                <div className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2">Votre rang</div>
                 <div className="text-4xl font-black text-gray-900">#7</div>
               </div>
               <div className="bg-primary/5 rounded-2xl p-5 text-center border border-primary/10">
-                <div className="text-primary/80 text-xs font-bold uppercase tracking-wider mb-2">Total Points</div>
+                <div className="text-primary/80 text-xs font-bold uppercase tracking-wider mb-2">Total des points</div>
                 <div className="text-4xl font-black text-primary">145</div>
               </div>
             </div>
 
             <div className="space-y-5 mb-8">
               <div className="flex justify-between items-center pb-4 border-b border-gray-100">
-                <span className="text-gray-600 font-medium">Issues Resolved</span>
+                <span className="text-gray-600 font-medium">Problèmes résolus</span>
                 <span className="font-bold text-gray-900">8</span>
               </div>
               <div className="flex justify-between items-center pb-4 border-b border-gray-100">
-                <span className="text-gray-600 font-medium">Events Attended</span>
+                <span className="text-gray-600 font-medium">Événements participés</span>
                 <span className="font-bold text-gray-900">2</span>
               </div>
               <div className="flex justify-between items-center pb-4 border-b border-gray-100">
-                <span className="text-gray-600 font-medium">Upvotes Received</span>
+                <span className="text-gray-600 font-medium">Votes reçus</span>
                 <span className="font-bold text-gray-900">47</span>
               </div>
             </div>
@@ -154,8 +154,8 @@ export default function Leaderboard({ data }: { data: any[] }) {
                 <Award className="w-6 h-6" />
               </div>
               <div>
-                <div className="text-xs text-blue-500 font-bold uppercase tracking-wider mb-1">Badge Earned</div>
-                <div className="font-bold text-gray-900">Earth Guardian 🌲</div>
+                <div className="text-xs text-blue-500 font-bold uppercase tracking-wider mb-1">Badge obtenu</div>
+                <div className="font-bold text-gray-900">Gardien de la Terre 🌲</div>
               </div>
             </div>
           </div>
@@ -164,21 +164,21 @@ export default function Leaderboard({ data }: { data: any[] }) {
             <div className="absolute top-0 right-0 w-32 h-32 bg-accent/20 rounded-full blur-3xl"></div>
             <div className="flex items-center mb-5 relative z-10">
               <Target className="w-6 h-6 text-accent mr-3" />
-              <h3 className="font-bold text-xl">Monthly Challenge</h3>
+              <h3 className="font-bold text-xl">Défi mensuel</h3>
             </div>
             <p className="text-gray-400 text-sm mb-6 leading-relaxed relative z-10">
-              Resolve 5 issues this month to earn the <span className="font-bold text-white">Green Hero badge 🌿</span> and 50 bonus points.
+              Résolvez 5 problèmes ce mois-ci pour obtenir le badge <span className="font-bold text-white">Héros Vert 🌿</span> et 50 points bonus.
             </p>
             
             <div className="mb-3 flex justify-between text-sm font-bold relative z-10">
-              <span className="text-gray-400">Progress</span>
+              <span className="text-gray-400">Progression</span>
               <span className="text-accent">3 / 5</span>
             </div>
             <div className="w-full bg-gray-800 rounded-full h-2.5 mb-6 relative z-10 overflow-hidden">
               <div className="bg-accent h-full rounded-full" style={{ width: '60%' }}></div>
             </div>
             <button className="w-full py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl transition-colors flex items-center justify-center relative z-10">
-              Find issues near me <ChevronRight className="w-4 h-4 ml-1" />
+              Trouver des problèmes près de moi <ChevronRight className="w-4 h-4 ml-1" />
             </button>
           </div>
         </div>

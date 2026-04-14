@@ -9,11 +9,11 @@ export default function Dashboard() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
         <div>
-          <h1 className="text-3xl font-black text-gray-900 tracking-tight">Impact Dashboard & Report Generator</h1>
-          <p className="text-gray-500 mt-2 text-lg font-medium">Fish Life Protection NGO Access</p>
+          <h1 className="text-3xl font-black text-gray-900 tracking-tight">Tableau de bord d'impact et générateur de rapports</h1>
+          <p className="text-gray-500 mt-2 text-lg font-medium">Accès ONG Earth Life Protection</p>
         </div>
         <div className="bg-primary/10 text-primary px-5 py-2.5 rounded-full text-sm font-bold flex items-center border border-primary/20 shadow-sm">
-          <CheckCircle className="w-5 h-5 mr-2" /> NGO Access Verified
+          <CheckCircle className="w-5 h-5 mr-2" /> Accès ONG vérifié
         </div>
       </div>
 
@@ -29,7 +29,7 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="text-4xl font-black text-gray-900 mb-1 tracking-tight">142</div>
-          <div className="text-gray-500 font-medium">Total Issues Reported</div>
+          <div className="text-gray-500 font-medium">Total des problèmes signalés</div>
         </div>
 
         <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow group">
@@ -45,7 +45,7 @@ export default function Dashboard() {
             <div className="text-4xl font-black text-gray-900 mr-3 tracking-tight">89</div>
             <div className="text-sm font-bold text-green-600 bg-green-100 px-2.5 py-1 rounded-lg">62%</div>
           </div>
-          <div className="text-gray-500 font-medium">Issues Resolved</div>
+          <div className="text-gray-500 font-medium">Problèmes résolus</div>
         </div>
 
         <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow group">
@@ -58,7 +58,7 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="text-4xl font-black text-gray-900 mb-1 tracking-tight">234</div>
-          <div className="text-gray-500 font-medium">Volunteers Mobilized</div>
+          <div className="text-gray-500 font-medium">Bénévoles mobilisés</div>
         </div>
 
         <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-200/60 hover:shadow-md transition-shadow group">
@@ -71,7 +71,7 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="text-4xl font-black text-gray-900 mb-1 tracking-tight">34</div>
-          <div className="text-gray-500 font-medium">Events Organized</div>
+          <div className="text-gray-500 font-medium">Événements organisés</div>
         </div>
       </div>
 
@@ -79,15 +79,15 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
         {/* Bar Chart */}
         <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-200/60">
-          <h3 className="font-black text-xl text-gray-900 mb-8">Monthly Issues Reported vs Resolved</h3>
+          <h3 className="font-black text-xl text-gray-900 mb-8">Problèmes signalés vs résolus par mois</h3>
           <div className="h-64 flex items-end justify-between gap-3">
             {[
               { month: 'Jan', rep: 40, res: 20 },
-              { month: 'Feb', rep: 60, res: 35 },
+              { month: 'Fév', rep: 60, res: 35 },
               { month: 'Mar', rep: 55, res: 45 },
-              { month: 'Apr', rep: 80, res: 50 },
-              { month: 'May', rep: 70, res: 65 },
-              { month: 'Jun', rep: 90, res: 80 },
+              { month: 'Avr', rep: 80, res: 50 },
+              { month: 'Mai', rep: 70, res: 65 },
+              { month: 'Juin', rep: 90, res: 80 },
             ].map((data, i) => (
               <div key={i} className="flex flex-col items-center flex-1 h-full justify-end group">
                 <div className="flex w-full justify-center gap-1.5 items-end h-[calc(100%-2.5rem)]">
@@ -103,14 +103,14 @@ export default function Dashboard() {
             ))}
           </div>
           <div className="flex justify-center mt-8 space-x-8 text-sm font-bold text-gray-600">
-            <div className="flex items-center"><div className="w-4 h-4 bg-gray-200 rounded-md mr-2.5"></div> Reported</div>
-            <div className="flex items-center"><div className="w-4 h-4 bg-primary rounded-md mr-2.5"></div> Resolved</div>
+            <div className="flex items-center"><div className="w-4 h-4 bg-gray-200 rounded-md mr-2.5"></div> Signalés</div>
+            <div className="flex items-center"><div className="w-4 h-4 bg-primary rounded-md mr-2.5"></div> Résolus</div>
           </div>
         </div>
 
         {/* Donut Chart */}
         <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-200/60 flex flex-col">
-          <h3 className="font-black text-xl text-gray-900 mb-8">Issues by Category</h3>
+          <h3 className="font-black text-xl text-gray-900 mb-8">Problèmes par catégorie</h3>
           <div className="flex-1 flex items-center justify-center">
             <div className="relative w-56 h-56 rounded-full shadow-inner" style={{
               background: 'conic-gradient(#3b82f6 0% 35%, #10b981 35% 60%, #f59e0b 60% 80%, #ef4444 80% 95%, #8b5cf6 95% 100%)'
@@ -122,11 +122,11 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-y-4 gap-x-6 mt-8 text-sm font-bold text-gray-600">
-            <div className="flex items-center"><div className="w-4 h-4 bg-blue-500 rounded-md mr-3"></div> Park Waste (35%)</div>
-            <div className="flex items-center"><div className="w-4 h-4 bg-emerald-500 rounded-md mr-3"></div> Street Waste (25%)</div>
-            <div className="flex items-center"><div className="w-4 h-4 bg-amber-500 rounded-md mr-3"></div> Illegal Dumping (20%)</div>
-            <div className="flex items-center"><div className="w-4 h-4 bg-red-500 rounded-md mr-3"></div> River Contam. (15%)</div>
-            <div className="flex items-center col-span-2 justify-center"><div className="w-4 h-4 bg-purple-500 rounded-md mr-3"></div> Air Pollution (5%)</div>
+            <div className="flex items-center"><div className="w-4 h-4 bg-blue-500 rounded-md mr-3"></div> Déchets de parc (35%)</div>
+            <div className="flex items-center"><div className="w-4 h-4 bg-emerald-500 rounded-md mr-3"></div> Déchets de rue (25%)</div>
+            <div className="flex items-center"><div className="w-4 h-4 bg-amber-500 rounded-md mr-3"></div> Décharge illégale (20%)</div>
+            <div className="flex items-center"><div className="w-4 h-4 bg-red-500 rounded-md mr-3"></div> Contam. de rivière (15%)</div>
+            <div className="flex items-center col-span-2 justify-center"><div className="w-4 h-4 bg-purple-500 rounded-md mr-3"></div> Pollution de l'air (5%)</div>
           </div>
         </div>
       </div>
@@ -135,7 +135,7 @@ export default function Dashboard() {
       <div className="bg-white rounded-3xl shadow-sm border border-gray-200/60 overflow-hidden">
         <div className="p-8 border-b border-gray-100 bg-gray-50/50">
           <h2 className="text-2xl font-black text-gray-900 flex items-center">
-            <FileText className="w-6 h-6 mr-3 text-primary" /> Generate Donor Report
+            <FileText className="w-6 h-6 mr-3 text-primary" /> Générer un rapport pour les donateurs
           </h2>
         </div>
         <div className="p-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -143,18 +143,18 @@ export default function Dashboard() {
           {/* Controls */}
           <div className="space-y-8">
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-3">Date Range</label>
+              <label className="block text-sm font-bold text-gray-700 mb-3">Plage de dates</label>
               <div className="flex items-center space-x-4">
                 <input type="date" className="flex-1 border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none shadow-sm transition-all font-medium text-gray-700" defaultValue="2025-04-01" />
-                <span className="text-gray-400 font-bold">to</span>
+                <span className="text-gray-400 font-bold">à</span>
                 <input type="date" className="flex-1 border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none shadow-sm transition-all font-medium text-gray-700" defaultValue="2025-06-30" />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-3">Include Sections</label>
+              <label className="block text-sm font-bold text-gray-700 mb-3">Inclure les sections</label>
               <div className="space-y-3 bg-gray-50 p-5 rounded-2xl border border-gray-100">
-                {['Issue Statistics', 'Volunteer Activity', 'Events Summary', 'Category Breakdown', 'Impact Photos'].map((section, i) => (
+                {['Statistiques des problèmes', 'Activité des bénévoles', 'Résumé des événements', 'Répartition par catégorie', 'Photos d\'impact'].map((section, i) => (
                   <label key={i} className="flex items-center space-x-3 cursor-pointer group">
                     <div className="relative flex items-center justify-center">
                       <input type="checkbox" className="peer appearance-none w-5 h-5 border-2 border-gray-300 rounded-md checked:bg-primary checked:border-primary transition-colors cursor-pointer" defaultChecked />
@@ -167,15 +167,15 @@ export default function Dashboard() {
             </div>
 
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-3">Report Format</label>
+              <label className="block text-sm font-bold text-gray-700 mb-3">Format du rapport</label>
               <div className="flex space-x-4">
                 <label className="flex-1 flex items-center justify-center px-4 py-3.5 border-2 border-primary bg-primary/5 text-primary rounded-xl cursor-pointer font-bold transition-colors">
                   <input type="radio" name="format" className="sr-only" defaultChecked />
-                  PDF Document
+                  Document PDF
                 </label>
                 <label className="flex-1 flex items-center justify-center px-4 py-3.5 border-2 border-gray-200 text-gray-500 rounded-xl cursor-pointer font-bold hover:bg-gray-50 hover:text-gray-700 transition-colors">
                   <input type="radio" name="format" className="sr-only" />
-                  HTML Link
+                  Lien HTML
                 </label>
               </div>
             </div>
@@ -184,13 +184,13 @@ export default function Dashboard() {
               onClick={() => setIsReportViewerOpen(true)}
               className="w-full py-4 bg-[#1e3a8a] text-white font-bold rounded-xl hover:bg-[#1e3a8a]/90 transition-all shadow-md active:scale-[0.98] flex items-center justify-center text-lg"
             >
-              <Download className="w-5 h-5 mr-2" /> Generate Report
+              <Download className="w-5 h-5 mr-2" /> Générer le rapport
             </button>
           </div>
 
           {/* Preview */}
           <div>
-            <label className="block text-sm font-bold text-gray-700 mb-3">Document Preview</label>
+            <label className="block text-sm font-bold text-gray-700 mb-3">Aperçu du document</label>
             <div className="w-full aspect-[1/1.4] bg-white rounded-2xl border border-gray-200 p-8 shadow-sm relative overflow-hidden flex flex-col group">
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-50/50 pointer-events-none"></div>
               
@@ -200,8 +200,8 @@ export default function Dashboard() {
                   🌲
                 </div>
                 <div className="text-right">
-                  <div className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Impact Report</div>
-                  <div className="text-sm font-black text-gray-900">Q2 2025</div>
+                  <div className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Rapport d'impact</div>
+                  <div className="text-sm font-black text-gray-900">T2 2025</div>
                 </div>
               </div>
               
