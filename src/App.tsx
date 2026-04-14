@@ -21,13 +21,17 @@ export default function App() {
     setReports(reports.map(r => r.id === id ? { ...r, status: 'In Progress' } : r));
   };
 
+  const handleAddReport = (newReport: any) => {
+    setReports([newReport, ...reports]);
+  };
+
   const handleJoinEvent = (id: string) => {
     setEvents(events.map(e => e.id === id ? { ...e, volunteers: Math.min(e.volunteers + 1, e.maxVolunteers) } : e));
   };
 
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<Layout onAddReport={handleAddReport} />}>
         <Route index element={<HomeFeed reports={reports} onUpvote={handleUpvote} onClaim={handleClaim} />} />
         <Route path="map" element={<MapView reports={reports} events={events} />} />
         <Route path="events" element={<Events events={events} onJoin={handleJoinEvent} />} />

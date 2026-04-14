@@ -53,7 +53,9 @@ export default function HomeFeed({ reports, onUpvote, onClaim }: { reports: any[
       {/* Feed List */}
       <div className="space-y-12">
         {reports.map((report, index) => {
-          const user = mockUsers[index % mockUsers.length];
+          const user = report.isAnonymous 
+            ? { name: 'Anonymous', avatar: 'https://ui-avatars.com/api/?name=Anonymous&background=f3f4f6&color=9ca3af', action: 'Reported', emoji: '🕵️' }
+            : mockUsers[index % mockUsers.length];
 
           return (
             <div key={report.id} className="group">
@@ -82,6 +84,13 @@ export default function HomeFeed({ reports, onUpvote, onClaim }: { reports: any[
 
               <div className="mt-2 mb-2">
                 <h4 className="font-bold text-xl sm:text-2xl text-gray-900 mb-2">{report.title}</h4>
+                
+                {report.image && (
+                  <div className="mb-4 rounded-2xl overflow-hidden border border-gray-200">
+                    <img src={report.image} alt="Report evidence" className="w-full h-auto object-cover max-h-[400px]" />
+                  </div>
+                )}
+
                 <p className="text-lg text-gray-700 leading-relaxed mb-4">
                   {report.description}
                 </p>

@@ -6,11 +6,18 @@ import { MapPin, Image as ImageIcon, Home, Map as MapIcon, Calendar, Trophy, Lay
 import { cn } from '../lib/utils';
 import { Logo } from './Logo';
 
-export function Layout() {
+export function Layout({ onAddReport }: { onAddReport?: (report: any) => void }) {
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
   const [showBottomNav, setShowBottomNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
+  
+  // Form state
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('Park Waste');
+  const [description, setDescription] = useState('');
+  const [reportLocation, setReportLocation] = useState('');
+
   const location = useLocation();
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,6 +31,44 @@ export function Layout() {
   const handleCloseModal = () => {
     setIsReportModalOpen(false);
     setPreviewImage(null);
+    setTitle('');
+    setCategory('Park Waste');
+    setDescription('');
+    setReportLocation('');
+  };
+
+  const handleSubmit = () => {
+    if (!title || !description || !reportLocation) return; // Basic validation
+
+    const categoryIcons: Record<string, string> = {
+      'Park Waste': '🏞️',
+      'Street Waste': '🗑️',
+      'Forest Debris': '🌲',
+      'Illegal Dumping': '⚠️',
+      'Air Pollution': '💨'
+    };
+
+    const newReport = {
+      id: Date.now().toString(),
+      title,
+      category,
+      categoryIcon: categoryIcons[category] || '🌍',
+      description,
+      location: reportLocation,
+      lat: 36.8, // Default approx lat
+      lng: 10.2, // Default approx lng
+      timeAgo: "Just now",
+      upvotes: 0,
+      status: "Open",
+      comments: 0,
+      isAnonymous: true, // Flag for anonymous user
+      image: previewImage // Pass the preview image if any
+    };
+
+    if (onAddReport) {
+      onAddReport(newReport);
+    }
+    handleCloseModal();
   };
 
   useEffect(() => {
@@ -129,12 +174,22 @@ export function Layout() {
         <div className="p-6 space-y-5">
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1.5">Title</label>
-            <input type="text" placeholder="e.g., Plastic waste in the park" className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" />
+            <input 
+              type="text" 
+              placeholder="e.g., Plastic waste in the park" 
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" 
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </div>
           
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1.5">Category</label>
-            <select className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm bg-white appearance-none">
+            <select 
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm bg-white appearance-none"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
               <option>Park Waste</option>
               <option>Street Waste</option>
               <option>Forest Debris</option>
@@ -145,7 +200,13 @@ export function Layout() {
 
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1.5">Description</label>
-            <textarea rows={3} placeholder="Describe the issue..." className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm resize-none"></textarea>
+            <textarea 
+              rows={3} 
+              placeholder="Describe the issue..." 
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm resize-none"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            ></textarea>
           </div>
 
           <div>
@@ -180,15 +241,22 @@ export function Layout() {
             <label className="block text-sm font-semibold text-gray-700 mb-1.5">Location</label>
             <div className="relative">
               <MapPin className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input type="text" placeholder="Search location or drop pin..." className="w-full border border-gray-200 rounded-xl pl-11 pr-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" />
+              <input 
+                type="text" 
+                placeholder="Search location or drop pin..." 
+                className="w-full border border-gray-200 rounded-xl pl-11 pr-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" 
+                value={reportLocation}
+                onChange={(e) => setReportLocation(e.target.value)}
+              />
             </div>
           </div>
         </div>
 
         <div className="p-5 border-t border-gray-100 bg-gray-50/80 backdrop-blur-sm">
           <button 
-            onClick={handleCloseModal}
-            className="w-full py-3.5 bg-accent text-white font-bold rounded-xl hover:bg-accent/90 transition-all shadow-sm active:scale-[0.98]"
+            onClick={handleSubmit}
+            disabled={!title || !description || !reportLocation}
+            className="w-full py-3.5 bg-accent text-white font-bold rounded-xl hover:bg-accent/90 transition-all shadow-sm active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Submit Report
           </button>
